@@ -1,12 +1,15 @@
 'use client';
 
+import { logout } from '@/actions/auth';
 import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
-import { useState } from 'react';
-
-const settings = ['Profile', 'Logout'];
+import { useRouter } from 'next/navigation';
+import { useRef, useState } from 'react';
 
 export default function HeaderAvatar() {
+  const router = useRouter();
+
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const submitBtnRef = useRef<HTMLButtonElement | null>(null);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -14,6 +17,10 @@ export default function HeaderAvatar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogout = async () => {
+    submitBtnRef.current?.click();
   };
 
   return (
@@ -39,11 +46,15 @@ export default function HeaderAvatar() {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {settings.map((setting) => (
-          <MenuItem key={setting} onClick={handleCloseUserMenu}>
-            <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-          </MenuItem>
-        ))}
+        <MenuItem onClick={() => router.push('/profile')}>
+          <Typography sx={{ textAlign: 'center' }}>Profile</Typography>
+        </MenuItem>
+        <MenuItem onClick={handleLogout}>
+          <Typography sx={{ textAlign: 'center' }}>Logout</Typography>
+        </MenuItem>
+        <form action={logout} style={{ display: 'none' }}>
+          <button type="submit" ref={submitBtnRef}></button>
+        </form>
       </Menu>
     </Box>
   );

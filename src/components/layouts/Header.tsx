@@ -5,18 +5,27 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import HeaderAvatar from '../HeaderAvatar';
+import Link from 'next/link';
 
-const isLogin = true;
+interface Props {
+  isLogin: boolean;
+}
 
-export default function Header() {
+export default function Header({ isLogin }: Props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            Pionero
           </Typography>
-          {isLogin ? <HeaderAvatar /> : <Button color="inherit">Login</Button>}
+          {isLogin ? (
+            <HeaderAvatar />
+          ) : (
+            <Link href="/login">
+              <Button color="inherit">Login</Button>
+            </Link>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
