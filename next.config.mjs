@@ -1,7 +1,5 @@
-/** @type {import('postcss-load-config').Config} */
+/** @type {import('next').NextConfig} */
 
-const config = {
-  plugins: {},
-};
+const nextConfig = {};
 
-export default config;
+export default nextConfig;
