@@ -1,4 +1,5 @@
-import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+
 import { decrypt, encrypt, expireSeconds } from '.';
 
 export type Credentials = {

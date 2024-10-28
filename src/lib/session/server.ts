@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
-import { decrypt, encrypt, expireSeconds } from '.';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { decrypt, encrypt, expireSeconds } from '.';
 
 export async function getSession() {
   const session = cookies().get('session')?.value;

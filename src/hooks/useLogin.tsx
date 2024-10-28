@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import { Credentials, login as createSession } from '@/lib/session/client';
 import { sleep } from '@/lib/utils/sleep';
-import { useState } from 'react';
 
 export default function useLogin() {
   const [isLoading, setIsLoading] = useState(false);

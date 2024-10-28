@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+
 import { isBrowser } from './is-server';
 
 export function hardNavigate(path: string) {
