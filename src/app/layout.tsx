@@ -1,24 +1,10 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import type { Metadata } from 'next';
-
-import localFont from 'next/font/local';
-import './globals.css';
-
 import Header from '@/components/layouts/Header';
 import { getSession } from '@/lib/session/server';
-import { Container } from '@mui/material';
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
+import theme from '@/theme';
+import { Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -35,10 +21,13 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <AppRouterCacheProvider>
-          <Header isLogin={isLogin} />
-          <Container className="main-content">{children}</Container>
+      <body>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Header isLogin={isLogin} />
+            <Container className="main-content">{children}</Container>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
