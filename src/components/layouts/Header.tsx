@@ -19,7 +19,7 @@ export default function Header({ isLogin }: Props) {
   const isLoginPage = pathname.indexOf('/login') !== -1;
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ height: 'fit-content' }}>
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

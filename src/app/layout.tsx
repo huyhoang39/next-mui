@@ -1,6 +1,6 @@
 import './globals.css';
 
-import { Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import type { Metadata } from 'next';
 
@@ -27,8 +27,23 @@ export default async function RootLayout({
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Header isLogin={isLogin} />
-            <Container className="main-content">{children}</Container>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '100vh',
+              }}
+            >
+              <Header isLogin={isLogin} />
+              <Container
+                sx={{
+                  flex: 1,
+                  pt: '20px',
+                }}
+              >
+                {children}
+              </Container>
+            </Box>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

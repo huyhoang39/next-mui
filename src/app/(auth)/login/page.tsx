@@ -1,12 +1,13 @@
 'use client';
 
-import FormInput from '@/components/form/FormInput';
-import useLogin from '@/hooks/useLogin';
-import { hardNavigate } from '@/lib/utils/router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Container, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+
+import FormInput from '@/components/form/FormInput';
+import useLogin from '@/hooks/useLogin';
+import { hardNavigate } from '@/lib/utils/router';
 
 const loginSchema = z.object({
   email: z
@@ -54,13 +55,19 @@ export default function Page() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{
+        marginTop: '100px',
+      }}
+    >
       <Box
         sx={{
-          mt: 3,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          width: '100%',
         }}
       >
         <Typography component="h1" variant="h5">
