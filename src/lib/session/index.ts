@@ -1,6 +1,7 @@
 import { jwtVerify, SignJWT } from 'jose';
 
-export const expireSeconds = 3600;
+export const EXPIRED_SECONDS = 3600;
+export const COOKIE_SESSION_KEY = 'session';
 
 // example secret key
 const secretKey = 'secret';
