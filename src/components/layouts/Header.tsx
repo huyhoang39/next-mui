@@ -1,25 +1,32 @@
-import * as React from 'react';
+'use client';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import HeaderAvatar from '../HeaderAvatar';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import HeaderAvatar from '../HeaderAvatar';
 
 interface Props {
   isLogin: boolean;
 }
 
 export default function Header({ isLogin }: Props) {
+  const pathname = usePathname();
+  const isLoginPage = pathname.indexOf('/login') !== -1;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Pionero
+            <Link href={'/'}>Pionero</Link>
           </Typography>
-          {isLogin ? (
+          {isLoginPage ? (
+            <></>
+          ) : isLogin ? (
             <HeaderAvatar />
           ) : (
             <Link href="/login">

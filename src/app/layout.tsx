@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import type { Metadata } from 'next';
 
 import localFont from 'next/font/local';
 import './globals.css';
 
 import Header from '@/components/layouts/Header';
-import { getSession } from '@/lib/session';
+import { getSession } from '@/lib/session/server';
 import { Container } from '@mui/material';
 
 const geistSans = localFont({
