@@ -2,6 +2,7 @@ import { jwtVerify, SignJWT } from 'jose';
 
 export const expireSeconds = 3600;
 
+// example secret key
 const secretKey = 'secret';
 const key = new TextEncoder().encode(secretKey);
 
