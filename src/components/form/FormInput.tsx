@@ -8,9 +8,17 @@ interface FormItemProps<T extends FieldValues> {
   label: string;
   type?: HTMLInputTypeAttribute;
   disabled?: boolean;
+  autoComplete?: string;
 }
 
-export default function FormInput<T extends FieldValues>({ control, name, label, type, disabled }: FormItemProps<T>) {
+export default function FormInput<T extends FieldValues>({
+  control,
+  name,
+  label,
+  type,
+  disabled,
+  autoComplete,
+}: FormItemProps<T>) {
   return (
     <Controller
       control={control}
@@ -19,7 +27,7 @@ export default function FormInput<T extends FieldValues>({ control, name, label,
         <TextField
           required
           fullWidth
-          autoComplete={name}
+          autoComplete={autoComplete || 'off'}
           label={label}
           type={type}
           value={field.value}

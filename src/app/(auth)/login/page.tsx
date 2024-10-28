@@ -79,7 +79,14 @@ export default function Page() {
           sx={{ mt: 3, display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}
           onSubmit={handleSubmit(handleLogin)}
         >
-          <FormInput control={control} name="email" label="Email" type="email" disabled={isLoading} />
+          <FormInput
+            control={control}
+            name="email"
+            label="Email"
+            type="email"
+            disabled={isLoading}
+            autoComplete="email"
+          />
           <FormInput control={control} name="password" label="Password" type="password" disabled={isLoading} />
           <Button variant="contained" type="submit" fullWidth disabled={isLoading || !!Object.keys(errors).length}>
             Login

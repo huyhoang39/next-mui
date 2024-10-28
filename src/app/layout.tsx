@@ -1,6 +1,6 @@
 import './globals.css';
 
-import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { Box, Container, CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import type { Metadata } from 'next';
 
@@ -27,6 +27,14 @@ export default async function RootLayout({
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+            <GlobalStyles
+              styles={{
+                'input:-webkit-autofill': {
+                  WebkitBoxShadow: '0 0 0 100px transparent inset !important',
+                  WebkitTextFillColor: 'var(--base-color) !important',
+                },
+              }}
+            />
             <Box
               sx={{
                 display: 'flex',
