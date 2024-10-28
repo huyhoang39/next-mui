@@ -1,10 +1,11 @@
 'use client';
 
+import FormInput from '@/components/form/FormItem';
 import useLogin from '@/hooks/useLogin';
 import { hardNavigate } from '@/lib/utils/router';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
-import { Controller, useForm } from 'react-hook-form';
+import { Box, Button, Container, Typography } from '@mui/material';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const loginSchema = z.object({
@@ -52,8 +53,6 @@ export default function Page() {
     hardNavigate('/');
   };
 
-  console.log('errors: ', Object.keys(errors).length);
-
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -73,42 +72,8 @@ export default function Page() {
           sx={{ mt: 3, display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}
           onSubmit={handleSubmit(handleLogin)}
         >
-          <Controller
-            control={control}
-            name="email"
-            render={({ field, fieldState }) => (
-              <TextField
-                required
-                fullWidth
-                autoComplete="email"
-                label="Email"
-                type="email"
-                value={field.value}
-                onChange={field.onChange}
-                disabled={isLoading}
-                error={!!fieldState.error}
-                helperText={!!fieldState.error ? fieldState.error?.message : undefined}
-              />
-            )}
-          />
-          <Controller
-            control={control}
-            name="password"
-            render={({ field, fieldState }) => (
-              <TextField
-                required
-                fullWidth
-                autoComplete="password"
-                label="Password"
-                type="password"
-                value={field.value}
-                onChange={field.onChange}
-                disabled={isLoading}
-                error={!!fieldState.error}
-                helperText={!!fieldState.error ? fieldState.error?.message : undefined}
-              />
-            )}
-          />
+          <FormInput control={control} name="email" label="Email" type="email" disabled={isLoading} />
+          <FormInput control={control} name="password" label="Password" type="password" disabled={isLoading} />
           <Button variant="contained" type="submit" fullWidth disabled={isLoading || !!Object.keys(errors).length}>
             Login
           </Button>
