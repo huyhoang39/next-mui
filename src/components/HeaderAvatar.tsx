@@ -1,8 +1,9 @@
-import { logout } from '@/lib/session/client';
-import { hardNavigate } from '@/lib/utils/router';
 import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+
+import { logout } from '@/lib/session/client';
+import { hardNavigate } from '@/lib/utils/router';
 
 export default function HeaderAvatar() {
   const router = useRouter();

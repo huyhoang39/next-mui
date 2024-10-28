@@ -1,6 +1,6 @@
 'use client';
 
-import FormInput from '@/components/form/FormItem';
+import FormInput from '@/components/form/FormInput';
 import useLogin from '@/hooks/useLogin';
 import { hardNavigate } from '@/lib/utils/router';
 import { zodResolver } from '@hookform/resolvers/zod';

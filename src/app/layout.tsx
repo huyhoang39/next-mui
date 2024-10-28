@@ -1,10 +1,12 @@
-import Header from '@/components/layouts/Header';
-import { getSession } from '@/lib/session/server';
-import theme from '@/theme';
+import './globals.css';
+
 import { Container, CssBaseline, ThemeProvider } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import type { Metadata } from 'next';
-import './globals.css';
+
+import Header from '@/components/layouts/Header';
+import { getSession } from '@/lib/session/server';
+import theme from '@/theme';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
